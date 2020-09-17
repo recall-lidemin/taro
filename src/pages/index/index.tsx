@@ -1,24 +1,33 @@
-import React, { Component } from 'react'
-import { View, Text } from '@tarojs/components'
+import Taro from '@tarojs/taro'
+import React from 'react'
+import { View } from '@tarojs/components'
+import { login } from '../../service/login'
 import './index.less'
 
-export default class Index extends Component {
+class Index extends React.Component {
+  config = {
+    navigationBarTitleText: '首页',
+  }
 
-  componentWillMount () { }
+  state = {
+    loading: true,
+    threads: [],
+  }
 
-  componentDidMount () { }
+  async componentDidMount() {
+    try {
+      const res = await login()
+      console.log(res)
+    } catch (error) {
+      Taro.showToast({
+        title: '载入远程数据错误',
+      })
+    }
+  }
 
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
-  render () {
-    return (
-      <View className='index'>
-        <Text>Hello world!</Text>
-      </View>
-    )
+  render() {
+    return <View className="index">123</View>
   }
 }
+
+export default Index
