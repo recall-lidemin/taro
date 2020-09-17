@@ -13,18 +13,24 @@ export default {
     backgroundColor: '#185000',
     list: [
       {
-        pagePath: 'pages/home/index',
+        pagePath: 'components/bar/index',
         text: '首页',
         iconPath: '',
         selectedIconPath: '',
       },
       {
-        pagePath: 'pages/login/index',
-        text: '登录',
+        pagePath: 'components/bar2/index',
+        text: '首页',
         iconPath: '',
         selectedIconPath: '',
       },
     ],
   },
   usingComponents: {},
+  subpackages: [
+    {
+      root: 'pages',
+      pages: ['login/index', 'home/index'],
+    },
+  ],
 }
