@@ -1,4 +1,5 @@
 import Taro, { request } from '@tarojs/taro'
+import { combineURL } from './url'
 
 interface MyOption {
   loading?: boolean
@@ -35,9 +36,10 @@ function service<T = any, U = any>({
       title: '加载中',
     })
   }
+
   return new Promise((resolve, reject) => {
     Taro.request({
-      url: serviceUrl + url,
+      url: combineURL(serviceUrl, url),
       data,
       method,
       header: {
