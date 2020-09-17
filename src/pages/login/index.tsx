@@ -1,29 +1,18 @@
-import Taro from '@tarojs/taro'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View } from '@tarojs/components'
 import { login } from '../../service/login'
-import style from './index.less'
 
-class Login extends React.Component {
-  state = {
-    loading: true,
-    threads: [],
-  }
+const Login: React.FC = () => {
+  const [useName, setUseName] = useState<string>('')
+  const fetchName = async () => {
+    const res = await login()
 
-  async componentDidMount() {
-    try {
-      const res = await login()
-      console.log(res)
-    } catch (error) {
-      Taro.showToast({
-        title: '载入远程数据错误',
-      })
-    }
+    setUseName(res.data.admin)
   }
-
-  render() {
-    return <View className={`${style['login']}`}>登录页面</View>
-  }
+  useEffect(() => {
+    fetchName()
+  }, [])
+  return <View>{useName}</View>
 }
 
 export default Login

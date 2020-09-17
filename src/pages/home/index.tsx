@@ -1,33 +1,17 @@
-import Taro from '@tarojs/taro'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View } from '@tarojs/components'
 import { login } from '../../service/login'
-import './index.less'
 
-class Index extends React.Component {
-  config = {
-    navigationBarTitleText: '首页',
+const Home: React.FC = () => {
+  const [useName, setUseName] = useState<any>()
+  const fetchName = async () => {
+    const res = await login()
+    setUseName(res.data.admin)
   }
-
-  state = {
-    loading: true,
-    threads: [],
-  }
-
-  async componentDidMount() {
-    try {
-      const res = await login()
-      console.log(res)
-    } catch (error) {
-      Taro.showToast({
-        title: '载入远程数据错误',
-      })
-    }
-  }
-
-  render() {
-    return <View className="index">123</View>
-  }
+  useEffect(() => {
+    fetchName()
+  }, [])
+  return <View>{useName}</View>
 }
 
-export default Index
+export default Home
