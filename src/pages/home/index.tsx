@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { Current } from '@tarojs/taro'
+import React from 'react'
 import { View } from '@tarojs/components'
-import { login } from '../../service/login'
 
 const Home: React.FC = () => {
-  const [useName, setUseName] = useState<any>()
-  console.log(Current)
+  // const [useName, setUseName] = useState<any>()
+  // console.log(Current)
 
-  const fetchName = async () => {
-    const res = await login()
-    setUseName(res.data.admin)
-  }
-  useEffect(() => {
-    fetchName()
-  }, [])
-  return <View>{useName}</View>
+  // const fetchName = async () => {
+  //   const res = await login()
+  //   setUseName(res.data.admin)
+  // }
+  // useEffect(() => {
+  //   fetchName()
+  // }, [])
+  return <View>首页</View>
 }
 
 export default Home
