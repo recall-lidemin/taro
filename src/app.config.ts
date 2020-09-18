@@ -7,30 +7,25 @@ export default {
     navigationBarTextStyle: 'black',
   },
   tabBar: {
-    color: '#000',
+    backgroundColor: '#fff',
+    selectedColor: '#387cd3',
+    color: '#807f80',
     borderStyle: 'white',
-    selectedColor: '#fff',
-    backgroundColor: '#185000',
     list: [
       {
-        pagePath: 'components/bar/index',
+        pagePath: 'pages/home/index',
         text: '首页',
-        iconPath: '',
-        selectedIconPath: '',
+        iconPath: './assets/images/icon-home.png',
+        selectedIconPath: './assets/images/icon-home1.png',
       },
       {
-        pagePath: 'components/bar2/index',
-        text: '首页',
-        iconPath: '',
-        selectedIconPath: '',
+        pagePath: 'pages/mine/index',
+        text: '我的',
+        iconPath: './assets/images/icon-client.png',
+        selectedIconPath: './assets/images/icon-client1.png',
       },
     ],
   },
   usingComponents: {},
-  subpackages: [
-    {
-      root: 'pages',
-      pages: ['login/index', 'home/index'],
-    },
-  ],
+  subpackages: [],
 }
