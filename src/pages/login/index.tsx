@@ -1,7 +1,8 @@
 import Taro from '@tarojs/taro'
 import { View, Form, Button } from '@tarojs/components'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AtInput } from 'taro-ui'
+import { login } from '../../service/login'
 import './index.less'
 
 interface Login {
@@ -21,15 +22,25 @@ const Login: React.FC = () => {
     setUser({ ...user, password: val })
   }
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event: any) => {
     console.log(event)
-    if (user.userName === 'admin' && user.password === '123456') {
-      Taro.switchTab({
-        url: '/pages/home/index',
-      })
-    } else {
+    try {
+      const res = await login()
+      const { data } = res
+      console.log(res)
+      if (user.userName === data.userName && user.password === data.password) {
+        Taro.switchTab({
+          url: '/pages/home/index',
+        })
+      } else {
+        Taro.showToast({
+          title: '登录失败！',
+          icon: 'none',
+        })
+      }
+    } catch (error) {
       Taro.showToast({
-        title: '登录失败！',
+        title: '获取信息失败！',
         icon: 'none',
       })
     }
@@ -37,6 +48,7 @@ const Login: React.FC = () => {
 
   return (
     <View className="body">
+      <View className="logo">logo</View>
       <View className="form">
         <Form onSubmit={onSubmit}>
           <AtInput
@@ -57,7 +69,12 @@ const Login: React.FC = () => {
             value={user.password}
             onChange={passwordChange}
           />
-          <Button type="primary" formType="submit" style={{ margin: '10px 0' }}>
+          <Button
+            type="primary"
+            size="default"
+            formType="submit"
+            style={{ margin: '10px 0', width: '100%' }}
+          >
             登录
           </Button>
         </Form>

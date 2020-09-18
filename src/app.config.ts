@@ -1,10 +1,14 @@
 export default {
   pages: ['pages/login/index', 'pages/home/index', 'pages/mine/index'],
   window: {
-    backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#fff',
+    backgroundTextStyle: 'dark',
+    backgroundColor: '#eee',
+    navigationBarBackgroundColor: '#DF2020',
     navigationBarTitleText: 'WeChat',
-    navigationBarTextStyle: 'black',
+    navigationBarTextStyle: 'white',
+    enablePullDownRefresh: true,
+    onReachBottomDistance: 30,
+    pageOrientation: 'auto',
   },
   tabBar: {
     backgroundColor: '#fff',
@@ -28,4 +32,5 @@ export default {
   },
   usingComponents: {},
   subpackages: [],
+  style: 'v2',
 }

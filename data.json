@@ -2,7 +2,7 @@
   "login": {
     "code": 0,
     "data": {
-      "admin": "admin",
+      "userName": "admin",
       "password": "123456"
     }
   }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { View } from '@tarojs/components'
+import './index.less'
 
 const Home: React.FC = () => {
   // const [useName, setUseName] = useState<any>()
@@ -12,7 +13,7 @@ const Home: React.FC = () => {
   // useEffect(() => {
   //   fetchName()
   // }, [])
-  return <View>首页</View>
+  return <View className="home">首页</View>
 }
 
 export default Home
