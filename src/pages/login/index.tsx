@@ -12,7 +12,7 @@ interface Login {
 const Login: React.FC = () => {
   const [user, setUser] = useState<Login>({
     userName: '',
-    password: '',
+    password: ''
   })
 
   const userNameChange = (val: string) => {
@@ -23,27 +23,29 @@ const Login: React.FC = () => {
   }
 
   const onSubmit = async (event: any) => {
-    console.log(event)
-    try {
-      const res = await login()
-      const { data } = res
-      console.log(res)
-      if (user.userName === data.userName && user.password === data.password) {
-        Taro.switchTab({
-          url: '/pages/home/index',
-        })
-      } else {
-        Taro.showToast({
-          title: '登录失败！',
-          icon: 'none',
-        })
-      }
-    } catch (error) {
-      Taro.showToast({
-        title: '获取信息失败！',
-        icon: 'none',
-      })
-    }
+    Taro.switchTab({
+      url: '/pages/home/index'
+    })
+    // try {
+    //   const res = await login()
+    //   const { data } = res
+    //   console.log(res)
+    //   if (user.userName === data.userName && user.password === data.password) {
+    //     Taro.switchTab({
+    //       url: '/pages/home/index',
+    //     })
+    //   } else {
+    //     Taro.showToast({
+    //       title: '登录失败！',
+    //       icon: 'none',
+    //     })
+    //   }
+    // } catch (error) {
+    //   Taro.showToast({
+    //     title: '获取信息失败！',
+    //     icon: 'none',
+    //   })
+    // }
   }
 
   return (
